@@ -1,7 +1,6 @@
 {
   "name": "TransferSH Bot",
   "description": "[TransferSH Bot] A Telegram Interface For transfer.sh",
-  "logo": "https://github.com/noobvishal/TransferSH/blob/master/img/logo.jpg",
   "keywords": [
     "telegram",
     "bot",
