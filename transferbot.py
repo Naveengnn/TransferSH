@@ -5,11 +5,11 @@
       $ python transferbot.py
 """
 
-__author__ = "jhonata.poma@gmail.com (Jhonata 'bomba' Poma)"
+__author__ = "noobvishal007@gmail.com (noobvishal 'noob' vishal)"
 
 import logging, re, requests, os
-from telegram.ext   import Updater, CommandHandler, MessageHandler
-from telegram.ext   import Filters, CallbackQueryHandler
+from telegram.ext import Updater, CommandHandler, MessageHandler
+from telegram.ext import Filters, CallbackQueryHandler
 from telegram.ext.dispatcher import run_async
 
 VERSION     = '0.2'
@@ -19,11 +19,12 @@ CONFIG_FILE = 'conf/token.conf'
 logging.basicConfig (format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger (__name__)
 
-try:
-    TOKEN   = open (CONFIG_FILE, 'r').read ().replace ("\n", "")
-except Exception, e:
-    logger.error ("Could not find '%s'." %(CONFIG_FILE))
-    exit (1)
+#try:
+#   TOKEN   = open (CONFIG_FILE, 'r').read ().replace ("\n", "")
+#except Exception, e:
+#    logger.error ("Could not find '%s'." %(CONFIG_FILE))
+#    exit (1)
+TOKEN = os.environ.get('TOKEN', None)
 
 def remove (filename):
     """ Removes the file after transfer.
@@ -65,11 +66,11 @@ def download (document, filename):
     return True
 
 def checkSize (filesize, update):
-    """ Checks if filesize fits inside 20mb. True if it does
+    """ Checks if filesize fits inside 20Mb. True if it does
     """
     SIZE_LIMIT = 20971520
     if (filesize > SIZE_LIMIT):
-        update.message.reply_text ("Your file is too big! Size limited to 20mb by Telegram Bot API", quote=True)
+        update.message.reply_text ("Your file is too big! Size limited to 20Mb by Telegram Bot API.", quote=True)
         logger.warn ("Rejected file, size was %s" %(filesize))
         return False
     return True
@@ -78,15 +79,14 @@ def checkSize (filesize, update):
 def cmd_start (bot, update):
     """ Send a message when the command /start is issued.
     """
-    update.message.reply_text ('Transferbot ' + VERSION)
-    update.message.reply_text ('Just send a picture, video, song or any other of telegram-supported ' \
-                               'media to upload it over transfer.sh')
+    update.message.reply_text ('@TransferSH_Bot is a Telegram Interface for transfer.sh .')
+    update.message.reply_text ('If You Need Any Help Reply With /help')
 
 def cmd_help (bot, update):
     """ Send a message when the command /help is issued.
     """
-    update.message.reply_text ('Just send a picture, video, song or any other of telegram-supported ' \
-                               'media to upload it over transfer.sh')
+    update.message.reply_text ('Just send any telegram-supported file less than 20MB ' \
+                               'and this bot will upload it to transfer.sh')
 
 def cmd_unknown (bot, update):
     """ Send a message if the command is not defined.
@@ -203,7 +203,7 @@ def main ():
 
     #   Start the Bot
     updater.start_polling ()
-    logger.info ('Kicking')
+    logger.info ('BOT STARTED')
 
     #   Loop until SIGNALS
     updater.idle ()

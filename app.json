@@ -1,0 +1,20 @@
+{
+  "name": "TransferSH Bot",
+  "description": "[TransferSH Bot] A Telegram Interface For transfer.sh",
+  "logo": "https://github.com/noobvishal/TransferSH/blob/master/img/logo.jpg",
+  "keywords": [
+    "telegram",
+    "bot",
+    "transfersh",
+  ],
+  "repository": "https://github.com/noobvishal/TransferSH",
+  "website": "https://github.com/noobvishal/TransferSH",
+  "success_url": "https://t.me/Transfer_SHBot",
+  "stack": "container",
+  "env": {
+	"TOKEN": {
+      "description": "Get Your Telegram Bot Token From BotFather In Telegram",
+      "required": true
+    }
+  },
+}
