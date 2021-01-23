@@ -10,10 +10,22 @@
   "website": "https://github.com/noobvishal/TransferSH",
   "success_url": "https://t.me/Transfer_SHBot",
   "stack": "container",
-  "env": {
-    "TOKEN": {
-      "description": "Get Your Telegram Bot Token From BotFather In Telegram",
-      "required": true
-    }
-  }
-}
+   "env": {
+
+ "BOT_TOKEN": 
+
+{"description":"Get This Value from https://telegram.dog/BotFather",
+
+ "value": ""}
+
+},
+
+ "buildpacks":
+
+ [{ "url": "heroku/python" } ]
+
+ }
+
+ 
+
+
